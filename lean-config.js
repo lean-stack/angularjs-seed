@@ -1,5 +1,6 @@
 
 exports.paths = {
   src: 'src',
-  tmp: '.tmp'
+  tmp: '.tmp',
+  dist: 'dist'
 };
