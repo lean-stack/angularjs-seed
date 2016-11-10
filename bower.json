@@ -1,0 +1,15 @@
+{
+  "name": "angularjs-seed",
+  "description": "Lean AngularJS seed.",
+  "authors": [
+    "Micha Alt <mail@lean-stack.de>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "angularjs",
+    "bower",
+    "gulp",
+    "seed"
+  ],
+  "homepage": "https://lean-stack.de"
+}

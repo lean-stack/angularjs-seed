@@ -1,0 +1,8 @@
+# NPM dependencies
+/node_modules/
+
+# Bower dependencies
+/bower_components/
+
+# IDE settings
+/.idea/

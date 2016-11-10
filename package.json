@@ -1,0 +1,24 @@
+{
+  "name": "angularjs-seed",
+  "version": "1.0.0",
+  "description": "Lean AngularJS seed.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lean-stack/angularjs-seed.git"
+  },
+  "keywords": [
+    "angularjs",
+    "bower",
+    "gulp",
+    "seed"
+  ],
+  "author": "Micha Alt <mail@lean-stack.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lean-stack/angularjs-seed/issues"
+  },
+  "homepage": "https://github.com/lean-stack/angularjs-seed#readme"
+}
