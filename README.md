@@ -1,0 +1,2 @@
+# Lean Angular Seed
+
