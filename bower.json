@@ -11,5 +11,10 @@
     "gulp",
     "seed"
   ],
-  "homepage": "https://lean-stack.de"
+  "homepage": "https://lean-stack.de",
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "bootstrap-sass": "^3.3.7",
+    "angular": "^1.5.8"
+  }
 }
