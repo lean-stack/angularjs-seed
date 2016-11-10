@@ -1,3 +1,7 @@
+# Temp and dist directories
+/.tmp/
+/dist/
+
 # NPM dependencies
 /node_modules/
 
