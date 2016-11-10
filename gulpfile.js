@@ -10,6 +10,7 @@ var browserSync = require('browser-sync');
 
 var tasks = {
   serve: serve,
+  serveDist: serveDist,
   inject: inject,
   watch: watch,
   build: build
@@ -19,6 +20,7 @@ gulp.task('inject', tasks.inject);
 gulp.task('build', ['inject'], tasks.build);
 gulp.task('watch', ['inject'], tasks.watch);
 gulp.task('serve', ['inject','watch'], tasks.serve);
+gulp.task('serve:dist', ['build'], tasks.serveDist);
 
 // Task functions
 
@@ -31,6 +33,18 @@ function serve(done) {
       routes: {
         '/bower_components': 'bower_components'
       }
+    },
+    open: false
+  });
+  done();
+}
+
+function serveDist(done) {
+  browserSync.init({
+    server: {
+      baseDir: [
+        conf.paths.dist
+      ]
     },
     open: false
   });
