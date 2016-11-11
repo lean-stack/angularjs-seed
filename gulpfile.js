@@ -64,10 +64,29 @@ function inject() {
 }
 
 function styles() {
+
+  var sassOptions = {
+    outputStyle: 'expanded',
+    precision: 10
+  };
+
+  var files = gulp.src(conf.paths.src + '/app/**/*.scss', { read: false });
+  var options = {
+    transform: function(filePath) {
+      filePath = filePath.replace(conf.paths.src + '/app/', '../app/');
+      return '@import "' + filePath + '";';
+    },
+    starttag: '// inject:scss',
+    endtag: '// endinject',
+    addRootSlash: false
+  };
+
   return gulp.src(conf.paths.src + '/styles/*.scss')
     .pipe(wiredep())
-    .pipe(plugins.sass())
-    .pipe(gulp.dest(conf.paths.tmp + '/styles'));
+    .pipe(plugins.inject(files, options))
+    .pipe(plugins.sass(sassOptions))
+    .pipe(gulp.dest(conf.paths.tmp + '/styles'))
+    .pipe(browserSync.stream());
 }
 
 function bootstrapFonts() {
@@ -77,6 +96,7 @@ function bootstrapFonts() {
 
 function watch(done) {
   gulp.watch([conf.paths.src + '/index.html','bower.json'], ['inject']);
+  gulp.watch([conf.paths.src + '/**/*.scss'], ['styles']);
   done();
 }
 
