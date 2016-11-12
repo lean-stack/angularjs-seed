@@ -12,6 +12,7 @@ var wiredep = require('wiredep').stream;
 var tasks = {
   serve: serve,
   serveDist: serveDist,
+  scripts: scripts,
   styles: styles,
   inject: inject,
   bootstrap: bootstrapFonts,
@@ -21,7 +22,8 @@ var tasks = {
 
 gulp.task('fonts', tasks.bootstrap);
 gulp.task('styles', tasks.styles);
-gulp.task('inject', ['styles','fonts'], tasks.inject);
+gulp.task('scripts', tasks.scripts);
+gulp.task('inject', ['styles','scripts','fonts'], tasks.inject);
 gulp.task('build', ['inject'], tasks.build);
 gulp.task('watch', ['inject'], tasks.watch);
 gulp.task('serve', ['inject','watch'], tasks.serve);
@@ -57,12 +59,30 @@ function serveDist(done) {
 }
 
 function inject() {
+
+  var scriptFiles = gulp.src([
+    conf.paths.tmp + '/scripts/**/*.js'
+  ])
+    .pipe(plugins.angularFilesort());
+
+  const options = {
+    ignorePath: [conf.paths.tmp],
+    addRootSlash: false
+  };
+
   return gulp.src(conf.paths.src + '/index.html')
+    .pipe(plugins.inject(scriptFiles,options))
     .pipe(wiredep())
     .pipe(gulp.dest(conf.paths.tmp))
     .pipe(browserSync.stream());
 }
 
+function scripts() {
+  return gulp.src(conf.paths.src + '/app/**/*.js')
+    .pipe(gulp.dest(conf.paths.tmp + '/scripts'));
+}
+
+// Collect sass files, inject them into the base files, compile and copy to temp folder
 function styles() {
 
   var sassOptions = {
@@ -70,7 +90,7 @@ function styles() {
     precision: 10
   };
 
-  var files = gulp.src(conf.paths.src + '/app/**/*.scss', { read: false });
+  var sassFiles = gulp.src(conf.paths.src + '/app/**/*.scss', { read: false });
   var options = {
     transform: function(filePath) {
       filePath = filePath.replace(conf.paths.src + '/app/', '../app/');
@@ -83,7 +103,7 @@ function styles() {
 
   return gulp.src(conf.paths.src + '/styles/*.scss')
     .pipe(wiredep())
-    .pipe(plugins.inject(files, options))
+    .pipe(plugins.inject(sassFiles, options))
     .pipe(plugins.sass(sassOptions))
     .pipe(gulp.dest(conf.paths.tmp + '/styles'))
     .pipe(browserSync.stream());
@@ -97,6 +117,7 @@ function bootstrapFonts() {
 function watch(done) {
   gulp.watch([conf.paths.src + '/index.html','bower.json'], ['inject']);
   gulp.watch([conf.paths.src + '/**/*.scss'], ['styles']);
+  gulp.watch([conf.paths.src + '/**/*.js'], ['inject']);
   done();
 }
 
