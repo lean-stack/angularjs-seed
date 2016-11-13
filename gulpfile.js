@@ -14,6 +14,7 @@ var tasks = {
   serveDist: serveDist,
   scripts: scripts,
   styles: styles,
+  templates: templates,
   inject: inject,
   bootstrap: bootstrapFonts,
   watch: watch,
@@ -21,9 +22,10 @@ var tasks = {
 };
 
 gulp.task('fonts', tasks.bootstrap);
-gulp.task('styles', tasks.styles);
 gulp.task('scripts', tasks.scripts);
-gulp.task('inject', ['styles','scripts','fonts'], tasks.inject);
+gulp.task('styles', tasks.styles);
+gulp.task('templates', tasks.templates);
+gulp.task('inject', ['scripts','styles','fonts','templates'], tasks.inject);
 gulp.task('build', ['inject'], tasks.build);
 gulp.task('watch', ['inject'], tasks.watch);
 gulp.task('serve', ['inject','watch'], tasks.serve);
@@ -110,6 +112,12 @@ function styles() {
     .pipe(plugins.sass(sassOptions))
     .pipe(gulp.dest(conf.paths.tmp + '/styles'))
     .pipe(browserSync.stream());
+}
+
+function templates() {
+  return gulp.src( conf.paths.src + '/app/**/*.html')
+    .pipe(plugins.htmlmin())
+    .pipe(gulp.dest(conf.paths.tmp + '/app'));
 }
 
 function bootstrapFonts() {

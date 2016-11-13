@@ -1,6 +1,8 @@
 (function () {
 
-  angular.module('app')
-    .component('appShell', {});
+  angular.module('leanApp')
+    .component('appShell', {
+      templateUrl: 'app/layout/shell.html'
+    });
 
 })();

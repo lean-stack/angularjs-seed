@@ -1,10 +1,9 @@
 (function () {
 
-  angular.module('app')
+  angular.module('leanApp')
     .config(configure);
 
-  function configure($log) {
-    $log.log('Configuring the app ...');
+  function configure() {
   }
 
 })();

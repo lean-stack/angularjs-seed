@@ -1,6 +1,6 @@
 (function () {
 
-  angular.module('app',[])
+  angular.module('leanApp',[])
     .run(kickOff);
 
   function kickOff($log) {
