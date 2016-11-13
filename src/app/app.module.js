@@ -3,7 +3,7 @@
   angular.module('app',[])
     .run(kickOff);
 
-  function kickOff() {
-    console.log('App running ...');
+  function kickOff($log) {
+    $log.log('App running ...');
   }
 })();

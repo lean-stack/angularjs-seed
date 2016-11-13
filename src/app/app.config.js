@@ -3,8 +3,8 @@
   angular.module('app')
     .config(configure);
 
-  function configure() {
-    console.log('Configuring the app ...');
+  function configure($log) {
+    $log.log('Configuring the app ...');
   }
 
 })();

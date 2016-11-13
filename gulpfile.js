@@ -77,8 +77,11 @@ function inject() {
     .pipe(browserSync.stream());
 }
 
+// Collect scripts, do linting and copy them to temp folder
 function scripts() {
   return gulp.src(conf.paths.src + '/app/**/*.js')
+    .pipe(plugins.eslint())
+    .pipe(plugins.eslint.format())
     .pipe(gulp.dest(conf.paths.tmp + '/scripts'));
 }
 
