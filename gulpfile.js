@@ -15,6 +15,7 @@ var tasks = {
   scripts: scripts,
   styles: styles,
   templates: templates,
+  assets: assets,
   inject: inject,
   bootstrap: bootstrapFonts,
   watch: watch,
@@ -25,10 +26,11 @@ gulp.task('fonts', tasks.bootstrap);
 gulp.task('scripts', tasks.scripts);
 gulp.task('styles', tasks.styles);
 gulp.task('templates', tasks.templates);
+gulp.task('assets', tasks.assets);
 gulp.task('inject', ['scripts','styles','fonts','templates'], tasks.inject);
-gulp.task('build', ['inject'], tasks.build);
+gulp.task('build', ['assets','inject'], tasks.build);
 gulp.task('watch', ['inject'], tasks.watch);
-gulp.task('serve', ['inject','watch'], tasks.serve);
+gulp.task('serve', ['assets','inject','watch'], tasks.serve);
 gulp.task('serve:dist', ['build'], tasks.serveDist);
 
 // Task functions
@@ -125,10 +127,16 @@ function bootstrapFonts() {
     .pipe(gulp.dest(conf.paths.tmp + '/fonts'));
 }
 
+function assets() {
+  return gulp.src( conf.paths.src + '/assets/**/*.*')
+    .pipe(gulp.dest(conf.paths.tmp));
+}
+
 function watch(done) {
   gulp.watch([conf.paths.src + '/index.html','bower.json'], ['inject']);
   gulp.watch([conf.paths.src + '/**/*.scss'], ['styles']);
   gulp.watch([conf.paths.src + '/**/*.js'], ['inject']);
+  gulp.watch([conf.paths.src + '/assets/**/*.*'], ['assets']);
   done();
 }
 
