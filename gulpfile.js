@@ -133,7 +133,7 @@ function assets() {
 }
 
 function watch(done) {
-  gulp.watch([conf.paths.src + '/index.html','bower.json'], ['inject']);
+  gulp.watch([conf.paths.src + '/**/*.html','bower.json'], ['inject']);
   gulp.watch([conf.paths.src + '/**/*.scss'], ['styles']);
   gulp.watch([conf.paths.src + '/**/*.js'], ['inject']);
   gulp.watch([conf.paths.src + '/assets/**/*.*'], ['assets']);
