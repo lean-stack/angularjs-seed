@@ -13,8 +13,8 @@
   ],
   "homepage": "https://lean-stack.de",
   "dependencies": {
-    "jquery": "^3.1.1",
-    "bootstrap-sass": "^3.3.7",
-    "angular": "^1.5.8"
+    "jquery": "^3.2.0",
+    "bootstrap-sass": "^3.3.0",
+    "angular": "^1.6.0"
   }
 }
