@@ -1,0 +1,23 @@
+{
+  "name": "angularjs-seed",
+  "version": "3.0.0",
+  "description": "Lean AngularJS seed (Webpack Version)",
+  "main": "index.js",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lean-stack/angularjs-seed.git"
+  },
+  "keywords": [
+    "angularjs",
+    "seed",
+    "webpack"
+  ],
+  "author": "Micha Alt <mail@lean-stack.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lean-stack/angularjs-seed/issues"
+  },
+  "homepage": "https://github.com/lean-stack/angularjs-seed#readme"
+}
