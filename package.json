@@ -3,8 +3,7 @@
   "version": "3.0.0",
   "description": "Lean AngularJS seed (Webpack Version)",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lean-stack/angularjs-seed.git"
@@ -19,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/lean-stack/angularjs-seed/issues"
   },
-  "homepage": "https://github.com/lean-stack/angularjs-seed#readme"
+  "homepage": "https://github.com/lean-stack/angularjs-seed#readme",
+  "dependencies": {
+    "angular": "^1.6.9"
+  }
 }
